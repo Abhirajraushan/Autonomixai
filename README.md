@@ -51,6 +51,7 @@ autonomixai/
 - **Node.js** (v18+)
 - **MongoDB** (Local or Atlas URI)
 - **MetaMask** (Browser Extension)
+- **Hardhat** (Globally or via npx)
 
 ### 2. Setup Commands
 ```bash
@@ -65,45 +66,63 @@ cd ../frontend/dashboard && npm install
 ```
 
 ## ⚡ Run the Project
+
+### Step-by-Step Terminal Usage
 ```bash
-# Terminal 1 - Blockchain (Hardhat)
+# Terminal 1 - Start Local Blockchain Node
 cd blockchain
 npx hardhat node
 
-# Terminal 2 - Backend (Node.js)
-cd ../backend
-npm start
+# In the same terminal, deploy contracts to Hardhat local node
+npx hardhat run scripts/deploy.js --network localhost
+```
 
-# Terminal 3 - Frontend (React)
-cd ../frontend/dashboard
+```bash
+# Terminal 2 - Start Backend Server
+cd backend
+npm start
+```
+
+```bash
+# Terminal 3 - Start Frontend React App
+cd frontend/dashboard
 npm start
 ```
 
 ## 🔧 Configuration Files
-1. **Hardhat Setup** (`blockchain/.env`)
-   ```
-   PRIVATE_KEY=your_wallet_key
-   HARDHAT_NETWORK_URL=http://localhost:8545
-   ```
 
-2. **Backend Setup** (`backend/.env`)
-   ```
-   MONGODB_URI=mongodb://localhost:27017/autonomixai
-   AGENT_REGISTRY_ADDRESS=0x5FbDB...
-   ```
+### 1. Hardhat Setup (`blockchain/.env`)
+```env
+PRIVATE_KEY=your_wallet_key
+HARDHAT_NETWORK_URL=http://localhost:8545
+```
 
-3. **Frontend Setup** (`frontend/dashboard/.env`)
-   ```
-   REACT_APP_AGENT_REGISTRY_ADDRESS=0x5FbDB...
-   REACT_APP_MARKETPLACE_ADDRESS=0xe7f17...
-   ```
+### 2. Backend Setup (`backend/.env`)
+```env
+MONGODB_URI=mongodb://localhost:27017/autonomixai
+AGENT_REGISTRY_ADDRESS=0x5FbDB...
+MARKETPLACE_ADDRESS=0xe7f17...
+```
+
+### 3. Frontend Setup (`frontend/dashboard/.env`)
+```env
+REACT_APP_AGENT_REGISTRY_ADDRESS=0x5FbDB...
+REACT_APP_MARKETPLACE_ADDRESS=0xe7f17...
+```
+
+## 🧪 Testing Contracts
+```bash
+# Run tests written in blockchain/test/
+npx hardhat test
+```
 
 ## 🚨 Troubleshooting
 | Issue | Solution |
 |-------|----------|
-| Contracts not deploying | Delete `blockchain/artifacts` and redeploy |
-| MetaMask connection errors | Switch to Hardhat Network (ChainID: 31337) |
-| MongoDB connection failed | Ensure `mongod` service is running |
+| Contracts not deploying | Delete `blockchain/artifacts` and `cache`, then redeploy |
+| MetaMask connection errors | Ensure MetaMask is connected to Hardhat Network (ChainID: 31337) |
+| MongoDB connection failed | Make sure `mongod` is running and URI is correct |
+| Frontend fails to connect to wallet | Refresh, reconnect MetaMask, or clear cache |
 
 ## 📜 License
 MIT License - Open Source
