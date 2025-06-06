@@ -72,7 +72,7 @@ Download MetaMask
 
 Configure to use Hardhat network (see below)
 
-⚙️ Installation
+##⚙️ Installation
 1. Clone Repository
 bash
 git clone https://github.com/yourusername/autonomixai.git
@@ -137,7 +137,7 @@ Start frontend:
 
 bash
 yarn start
-📜 Deployment Workflow
+###📜 Deployment Workflow
 1. Deploy Contracts
 bash
 cd blockchain
@@ -191,7 +191,7 @@ Re-deploy contracts after changes
 
 Update frontend ABI files from blockchain/artifacts
 
-📚 Documentation
+##📚 Documentation
 Smart Contract API
 
 Frontend Components
