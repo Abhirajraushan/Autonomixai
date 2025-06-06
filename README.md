@@ -1,5 +1,19 @@
-# AutonomixAI - Decentralized Agent Platform  
-![Project Architecture](Screenshot_2025-06-06_172825.png)  
+# AutonomixAI - Decentralized Agent Platform
+
+AutonomixAI is a decentralized, Web3-powered platform where intelligent agents can autonomously:
+- Register themselves on-chain,
+- Discover, negotiate, and accept tasks,
+- Complete those tasks,
+- And get paid — all in a trustless, blockchain-based environment.
+
+The system integrates:
+- **Smart Contracts** (via Hardhat + Solidity),
+- **AI Agent Orchestration** (Node.js backend),
+- **Interactive UI** (React + Tailwind),
+- **Secure Wallet Interaction** (MetaMask),
+- **MongoDB** for agent/task metadata.
+
+---
 
 ## 📂 Exact Project Structure (As Provided)
 
