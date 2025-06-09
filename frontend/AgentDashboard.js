@@ -86,26 +86,29 @@ const AgentDashboard = ({ account }) => {
   };
 
   useEffect(() => {
-    const checkNetwork = async () => {
-      if (window.ethereum) {
-        try {
-          const chainId = await window.ethereum.request({ method: 'eth_chainId' });
-          if (chainId !== '0x7a69') { // Hardhat network id
-            await window.ethereum.request({
-              method: 'wallet_switchEthereumChain',
-              params: [{ chainId: '0x7a69' }],
-            });
-          }
-        } catch (err) {
-          console.error("Network switch error:", err);
+  const checkNetwork = async () => {
+    if (window.ethereum) {
+      try {
+        const chainId = await window.ethereum.request({ method: 'eth_chainId' });
+        if (chainId !== '0x7a69') {
+          await window.ethereum.request({
+            method: 'wallet_switchEthereumChain',
+            params: [{ chainId: '0x7a69' }],
+          });
         }
+      } catch (err) {
+        alert("Switch to Hardhat Network in MetaMask!");
+        console.error("Network switch error:", err);
       }
-    };
-    checkNetwork();
+    }
+  };
+  checkNetwork(); // Run only once on mount
+}, []);
 
-    if (account) loadAgentData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [account]);
+useEffect(() => {
+  if (account) loadAgentData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+}, [account]);
 
   return (
     <div className="bg-white rounded-lg shadow-md p-6 mb-8">
