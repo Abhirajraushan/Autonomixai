@@ -30,16 +30,14 @@ contract TaskMarketplace {
 
     // ✅ Reward executor on task completion
     function completeTask(uint256 _taskId) public payable {
-        Task storage task = tasks[_taskId];
-        require(!task.isCompleted, "Task already completed");
-        require(address(this).balance >= task.reward, "Insufficient contract balance");
-
-        task.isCompleted = true;
-        task.executor = msg.sender;
-        executorTasks[msg.sender].push(_taskId);
-        payable(msg.sender).transfer(task.reward);
-        emit TaskCompleted(_taskId, msg.sender);
-    }
+    Task storage task = tasks[_taskId]; 
+    require(!task.isCompleted, "Task already completed");
+    require(address(this).balance >= task.reward, "Insufficient balance");
+    task.isCompleted = true;
+    task.executor = msg.sender;
+    payable(msg.sender).transfer(task.reward);
+    emit TaskCompleted(_taskId, msg.sender);
+}
 
     function getTaskCount() public view returns (uint256) {
         return tasks.length;
