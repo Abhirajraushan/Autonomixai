@@ -25,7 +25,7 @@ exports.registerAgent = async (req, res) => {
     const registryAbi = JSON.parse(fs.readFileSync(abiPath)).abi;
 
     const registry = new ethers.Contract(process.env.REGISTRY_ADDRESS, registryAbi, wallet);
-    await registry.registerAgent(name);
+    await registry.register(name);
 
     const token = jwt.sign(
       { id: newAgent._id, walletAddress: newAgent.walletAddress },
