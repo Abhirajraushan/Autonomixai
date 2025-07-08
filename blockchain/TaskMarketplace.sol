@@ -18,7 +18,7 @@ contract TaskMarketplace {
     event TaskCreated(uint256 indexed id, string description);
     event TaskCompleted(uint256 indexed id, address executor);
 
-    // ✅ Accept ETH while creating task
+    // Accept ETH while creating task
     function createTask(string memory _description, uint256 _reward) public payable {
         require(msg.value == _reward, "Sent value must match reward");
 
@@ -28,7 +28,7 @@ contract TaskMarketplace {
         emit TaskCreated(newTaskId, _description);
     }
 
-    // ✅ Reward executor on task completion
+    //  Reward executor on task completion
     function completeTask(uint256 _taskId) public payable {
     Task storage task = tasks[_taskId]; 
     require(!task.isCompleted, "Task already completed");
@@ -43,6 +43,6 @@ contract TaskMarketplace {
         return tasks.length;
     }
 
-    // ✅ Allow ETH to be received
+    //  Allow ETH to be received
     receive() external payable {}
 }
