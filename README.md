@@ -133,7 +133,7 @@ npx hardhat test
 ## 🚨 Troubleshooting
 | Issue | Solution |
 |-------|----------|
-| Contracts not deploying | Delete `blockchain/artifacts` and `cache`, then redeploy |
+| Contracts not deploying | Delete `blockchain/artifacts` and `cache`, then re-deploy |
 | MetaMask connection errors | Ensure MetaMask is connected to Hardhat Network (ChainID: 31337) |
 | MongoDB connection failed | Make sure `mongod` is running and URI is correct |
 | Frontend fails to connect to wallet | Refresh, reconnect MetaMask, or clear cache |
