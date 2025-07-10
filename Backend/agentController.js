@@ -1,5 +1,4 @@
 // REMOVE: require('../config');  // env already loaded in app.js
-
 const Agent = require('../models/Agent');
 const { createNewWallet } = require('../../blockchain/scripts/walletUtils');
 const { ethers } = require('ethers');
